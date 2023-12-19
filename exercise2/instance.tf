@@ -1,4 +1,4 @@
-resource "aws_instance" "mysec-instance" {
+resource "aws_instance" "mysec-terr" {
   ami                    = var.AMIS[var.REGION]
   instance_type          = "t2.micro"
   availability_zone      = var.ZONE1
