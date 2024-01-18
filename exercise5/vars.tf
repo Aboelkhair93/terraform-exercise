@@ -7,13 +7,13 @@ variable ZONE1 {
 }
 
 variable AMIS {
-  type = map
+  type = map(any)
   default = {
     us-east-2 = "ami-03657b56516ab7912"
-    us-east-1 = "ami-0947d2ba12ee1ff75"
+    us-east-1 = "ami-0c7217cdde317cfec"
   }
 }
 
 variable USER {
-  default = "ec2-user"
+  default = "ubuntu"
 }

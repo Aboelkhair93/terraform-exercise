@@ -1,17 +1,17 @@
-resource "aws_key_pair" "dove-key" {
-  key_name   = "dovekey"
-  public_key = file("dovekey.pub")
+resource "aws_key_pair" "terraform-key" {
+  key_name   = "terrakey"
+  public_key = file("terra-key.pub")
 }
 
-resource "aws_instance" "dove-inst" {
+resource "aws_instance" "terra-inst" {
   ami                    = var.AMIS[var.REGION]
   instance_type          = "t2.micro"
   availability_zone      = var.ZONE1
-  key_name               = aws_key_pair.dove-key.key_name
+  key_name               = aws_key_pair.terraform-key.key_name
   vpc_security_group_ids = ["sg-0780815f55104be8a"]
   tags = {
-    Name    = "Dove-Instance"
-    Project = "Dove"
+    Name    = "terra-Instance"
+    Project = "terra5"
   }
 
   provisioner "file" {
@@ -29,15 +29,15 @@ resource "aws_instance" "dove-inst" {
 
   connection {
     user        = var.USER
-    private_key = file("dovekey")
+    private_key = file("terra-key")
     host        = self.public_ip
   }
 }
 
 output "PublicIP" {
-  value = aws_instance.dove-inst.public_ip
+  value = aws_instance.terra-inst.public_ip
 }
 
 output "PrivateIP" {
-  value = aws_instance.dove-inst.private_ip
+  value = aws_instance.terra-inst.private_ip
 }

@@ -15,7 +15,7 @@ variable ZONE3 {
 }
 
 variable AMIS {
-  type = map
+  type = map(any)
   default = {
     us-east-2 = "ami-03657b56516ab7912"
     us-east-1 = "ami-0947d2ba12ee1ff75"
@@ -27,13 +27,13 @@ variable USER {
 }
 
 variable PUB_KEY {
-  default = "dovekey.pub"
+  default = "terra-key.pub"
 }
 
 variable PRIV_KEY {
-  default = "dovekey"
+  default = "terrakey"
 }
 
 variable MYIP {
-  default = "183.83.67.89/32"
+  default = ""
 }
